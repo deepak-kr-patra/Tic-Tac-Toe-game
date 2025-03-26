@@ -125,8 +125,10 @@ public class SinglePlayerLayout extends AppCompatActivity implements View.OnClic
             startActivity(intent);
         }
 
+        Random rand = new Random();
+
         if (newGameClicked == false && backClicked == false) {
-            if (crossPositions.contains(position) == false && zeroPositions.contains(position) == false) {
+            if (!crossPositions.contains(position) && !zeroPositions.contains(position)) {
                 if (gameOver == false) {
                     int crossPos = position;
 
@@ -141,7 +143,6 @@ public class SinglePlayerLayout extends AppCompatActivity implements View.OnClic
                 }
 
                 if (gameOver == false) {
-                    Random rand = new Random();
                     int zeroPos = rand.nextInt(9) + 1;
                     while (crossPositions.contains(zeroPos) || zeroPositions.contains(zeroPos)) {
                         zeroPos = rand.nextInt(9) + 1;
@@ -228,11 +229,11 @@ public class SinglePlayerLayout extends AppCompatActivity implements View.OnClic
                 return "0 won!";
             }
         }
+
         if(crossPositions.size() + zeroPositions.size() == 9) {
             return "draw";
         }
-        else {
-            return "";
-        }
+
+        return "";
     }
 }
