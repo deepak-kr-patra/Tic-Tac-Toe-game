@@ -234,28 +234,17 @@ public class MultiplayerLayout extends AppCompatActivity implements View.OnClick
         winning.add(cross2);
 
         for(List l : winning) {
-            if(crossPositions.size() + zeroPositions.size() == 9) {
-                if(crossPositions.containsAll(l)) {
-                    return "X won!";
-                }
-                else if(zeroPositions.containsAll(l)) {
-                    return "0 won!";
-                }
+            if(crossPositions.containsAll(l)) {
+                return "X won!";
             }
-            else {
-                if(crossPositions.containsAll(l)) {
-                    return "X won!";
-                }
-                else if(zeroPositions.containsAll(l)) {
-                    return "0 won!";
-                }
+            else if(zeroPositions.containsAll(l)) {
+                return "0 won!";
             }
         }
         if(crossPositions.size() + zeroPositions.size() == 9) {
             return "draw";
         }
-        else {
-            return "";
-        }
+
+        return "";
     }
 }
